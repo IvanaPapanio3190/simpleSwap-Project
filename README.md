@@ -282,7 +282,7 @@ This project is licensed under the MIT License © 2025
 
 
 ---
-Made by: [Ivana Papaño](#https://github.com/IvanaPapanio3190)
+Made by: [Ivana Papaño](https://github.com/IvanaPapanio3190)
 
 
 ---
