@@ -252,7 +252,7 @@ uint256 amountOut: The maximum amount of output tokens the user will receive aft
 ## Contract Details
 
 - Contract Name: `SimpleSwap.sol`
-- Located in: `/contracts` directory
+- Located in: main directory of the repository
 - Uses OpenZeppelin's 'IERC20' interface for token interaction.
 - Implements key functions with detailed NatSpec comments.
 - Designed to replicate basic Uniswap V2 functionality without external dependencies.
