@@ -23,6 +23,7 @@ The contract implements essential functions such as:
 
 ## Table of Contents
 - [Project Overview](#project-overview)
+- [Smart Contract Flow](#smart-contract-flow)
 - [Description](#description)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -32,6 +33,13 @@ The contract implements essential functions such as:
 - [Testing](#testing)
 - [Limitations](#limitations)
 - [License](#license)
+
+---
+
+## Smart Contract Flow
+
+![SimpleSwap Flowchart](./SimpleSwap_flowchart.png)
+
 
 ---
 ## Description
