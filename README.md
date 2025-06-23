@@ -1,6 +1,24 @@
 # SimpleSwap - Decentralized Token Swap Contract
 
+# Trabajo Práctico Final - Módulo N° 3
 
+---
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Smart Contract Flow](#smart-contract-flow)
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Contract Details](#contract-details)
+- [Testing](#testing)
+- [Limitations](#limitations)
+- [License](#license)
+
+
+---
 
 ## Project Overview
 SimpleSwap is a simplified decentralized exchange contract inspired by Uniswap V2, allowing users to add and remove liquidity, swap ERC20 tokens, and query token prices.
@@ -19,22 +37,9 @@ The contract implements essential functions such as:
 
 **getAmountOut()**
 
----
-
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Smart Contract Flow](#smart-contract-flow)
-- [Description](#description)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Contract Details](#contract-details)
-- [Testing](#testing)
-- [Limitations](#limitations)
-- [License](#license)
 
 ---
+
 
 ## Smart Contract Flow
 
@@ -272,3 +277,12 @@ uint256 amountOut: The maximum amount of output tokens the user will receive aft
 ## License
 
 This project is licensed under the MIT License © 2025
+
+
+
+
+---
+Made by: [Ivana Papaño](#https://github.com/IvanaPapanio3190)
+
+
+---
