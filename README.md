@@ -20,6 +20,20 @@ The contract implements essential functions such as:
 **getAmountOut()**
 
 ---
+
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Description](#description)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Contract Details](#contract-details)
+- [Testing](#testing)
+- [Limitations](#limitations)
+- [License](#license)
+
+---
 ## Description
 
 SimpleSwap allows users to:
@@ -32,9 +46,41 @@ The contract replicates basic Uniswap V2 logic without relying on the actual Uni
 
 ---
 
+## Prerequisites
 
- 
- ## Features
+- Solidity version: 0.8.20
+- Remix IDE for compiling and deploying contracts
+- OpenZeppelin Contracts for ERC20 interface (imported locally)
+- Metamask with Sepolia testnet configured
+
+---
+
+## Installation
+
+1. Clone or download this repository.
+2. Open Remix IDE (https://remix.ethereum.org).
+3. Load the contract file 'SimpleSwap.sol'.
+4. Select Solidity compiler version 0.8.20.
+5. Enable optimizer with 200 runs.
+6. Compile the contract.
+7. Deploy the contract to the Sepolia testnet using injected Web3 provider (Metamask).
+
+
+---
+
+## Deployment
+
+The contract was deployed on the **Sepolia Testnet** at the following address:
+
+https://sepolia.etherscan.io/verifyContract-solc?a=0x2E55A19E95185E8808b61f72485Ff0aEc398f227&c=v0.8.20%2bcommit.a1b79de6&lictype=3
+
+Although verification failed due to import issues in Remix (file callback not supported), all core functions were tested and executed successfully.
+
+---
+
+## Usage
+
+Use the following main functions:
  
 **🔹addLiquidity(...)** : Adds liquidity to the token pool by depositing a pair of ERC20 tokens.
 
@@ -96,3 +142,125 @@ uint256 deadline: Timestamp after which the transaction will fail.
 uint256 amountA: Amount of token A returned.
 
 uint256 amountB: Amount of token B returned.
+
+---
+
+**🔹 swapExactTokensForTokens(...)**: Swaps a fixed amount of input token for the maximum possible amount of output token, respecting minimum output and deadline.
+
+This function allows a user to swap an exact amount of one ERC20 token (inputToken) for another ERC20 token (outputToken) within the liquidity pool. It guarantees that the user will receive at least a minimum amount of the output token (amountOutMin) to protect against price slippage, and the swap must happen before the specified deadline.
+
+How it works:
+
+- The user specifies exactly how many tokens they want to swap (amountIn).
+
+- The contract calculates how many tokens the user will receive based on current pool reserves and the constant product formula.
+
+- The function checks that the output amount is at least the minimum specified (amountOutMin) to avoid unexpected losses.
+
+- If the swap conditions are met, the contract transfers the input tokens from the user, swaps them in the pool, and sends the output tokens to the recipient address (to).
+
+- The deadline parameter prevents transactions from executing if too much time has passed, protecting the user from unfavorable price changes.
+
+**Parameters:**
+
+uint256 amountIn: Exact amount of input tokens to swap.
+
+uint256 amountOutMin: Minimum amount of output tokens to receive.
+
+address[] path: Array with two addresses — [inputToken, outputToken].
+
+address to: Recipient address of output tokens.
+
+uint256 deadline: Timestamp after which the transaction will fail.
+
+**Returns:**
+
+uint256[] amounts: Array with the input and output token amounts: [amountIn,amountOut].
+
+---
+
+
+**🔹 getPrice(...)**: Returns the current price of tokenA in terms of tokenB or vice versa, based on the reserves.
+
+This function calculates and returns the current exchange rate between two ERC20 tokens, based on the liquidity pool reserves.
+It answers the question: “How much of tokenB is needed to get 1 unit of tokenA?”
+
+**It works bidirectionally:**
+
+- If tokenA is the input and tokenB is the quote token, it returns the price of tokenA in terms of tokenB.
+
+- If reversed, it returns the price of tokenB in terms of tokenA.
+
+
+**Parameters:**
+
+address tokenA: Address of token A.
+
+address tokenB: Address of token B.
+
+**Returns:**
+
+uint256 price: Price of 1 unit of tokenA in terms of tokenB (scaled to 18 decimals).
+
+---
+
+**🔹 getAmountOut(...)**: Calculates the output amount a user would receive for a given input amount, using the AMM formula with swap fee.
+
+This function calculates how many output tokens a user will receive when swapping a specific amount of input tokens, based on the current liquidity reserves in the pool and including the swap fee.
+
+It uses the Automated Market Maker (AMM) formula, which keeps the product of the reserves constant, applying a fee (usually 0.3%) on the input amount to incentivize liquidity providers.
+
+**How it works:**
+
+- Takes the exact amount of input tokens the user wants to swap (amountIn).
+
+- Considers the current reserves of both input (reserveIn) and output (reserveOut) tokens in the pool.
+
+- Applies the swap fee by reducing the effective input amount.
+
+- Calculates the maximum amount of output tokens the user can get while maintaining the pool’s constant product formula.
+
+- Returns this calculated output amount (amountOut).
+
+**Parameters:**
+
+uint256 amountIn: The amount of tokens the user wants to swap into the pool.
+
+uint256 reserveIn: Current reserve of the input token in the liquidity pool.
+
+uint256 reserveOut: Current reserve of the output token in the liquidity pool.
+
+**Returns:**
+
+uint256 amountOut: The maximum amount of output tokens the user will receive after the swap and fee.
+
+---
+
+## Contract Details
+
+- Contract Name: `SimpleSwap.sol`
+- Located in: `/contracts` directory
+- Uses OpenZeppelin's 'IERC20' interface for token interaction.
+- Implements key functions with detailed NatSpec comments.
+- Designed to replicate basic Uniswap V2 functionality without external dependencies.
+
+---
+
+## Testing
+
+- Functions were manually tested on the Sepolia testnet with deployed ERC20 tokens.
+- All transactions were verified in Remix and on Sepolia blockchain explorer.
+- Due to Remix import limitations, contract verification on Etherscan was unsuccessful.
+
+---
+
+## Limitations
+
+- OpenZeppelin imports could not be verified on Etherscan due to import callback restrictions in Remix.
+- Swap fee is fixed and simplified.
+- Does not implement advanced Uniswap features like flash swaps or multi-hop swaps.
+
+---
+## License
+
+This project is licensed under the MIT License © 2025
