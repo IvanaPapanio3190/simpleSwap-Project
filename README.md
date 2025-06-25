@@ -270,6 +270,13 @@ uint256 amountOut: The maximum amount of output tokens the user will receive aft
 
 ---
 
+## Pending/In-Progress Tests
+
+- 'swapExactTokensForTokens()' and 'removeLiquidity()' are being tested.
+- Results, screenshots, and edge analysis will be added soon.
+
+---  
+
 ## Limitations
 
 - OpenZeppelin imports could not be verified on Etherscan due to import callback restrictions in Remix.
