@@ -14,6 +14,7 @@
 - [Usage](#usage)
 - [Contract Details](#contract-details)
 - [Testing](#testing)
+- [Pruebas pendientes / en progreso](#pruebas-pendientes--en-progreso)
 - [Limitations](#limitations)
 - [License](#license)
 
