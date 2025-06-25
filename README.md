@@ -83,11 +83,14 @@ The contract replicates basic Uniswap V2 logic without relying on the actual Uni
 
 ## Deployment
 
-The contract was deployed on the **Sepolia Testnet** at the following address:
+The contract was deployed and successfully verified on the **Sepolia Testnet** at the following address:
 
-https://sepolia.etherscan.io/verifyContract-solc?a=0x2E55A19E95185E8808b61f72485Ff0aEc398f227&c=v0.8.20%2bcommit.a1b79de6&lictype=3
 
-Although verification failed due to import issues in Remix (file callback not supported), all core functions were tested and executed successfully.
+https://sepolia.etherscan.io/verifyContract-solc?a=0x5d5c3d45CEDcecfe2E87FC92D2bB7E7916aB6168&c=v0.8.20%2bcommit.a1b79de6&lictype=3
+
+
+- Functions were manually tested on Sepolia with deployed ERC20 tokens.
+- Transactions were confirmed via Remix and visible on Sepolia’s blockchain explorer.
 
 ---
 
