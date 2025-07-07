@@ -231,6 +231,48 @@ uint256 deadline: Timestamp after which the transaction will fail.
 
 uint256[] amounts: Array with the input and output token amounts: [amountIn,amountOut].
 
+
+
+
+
+
+
+*****
+
+**🔹 swapExactTokensForTokens(...)**: Swaps a fixed amount of input token for the maximum possible amount of output token, respecting minimum output and deadline.
+
+This function allows a user to swap an exact amount of one ERC20 token (inputToken) for another ERC20 token (outputToken) within the liquidity pool. It guarantees that the user will receive at least a minimum amount of the output token (amountOutMin) to protect against price slippage, and the swap must happen before the specified deadline.
+
+**How it works:**
+
+- The user specifies exactly how many tokens they want to swap (amountIn).
+- The contract calculates how many tokens the user will receive based on current pool reserves and the constant product formula.
+- The function checks that the output amount is at least the minimum specified (amountOutMin) to avoid unexpected losses.
+- If the swap conditions are met, the contract transfers the input tokens from the user, swaps them in the pool, and sends the output tokens to the recipient address (to).
+- The deadline parameter prevents transactions from executing if too much time has passed, protecting the user from unfavorable price changes.
+
+**Tasks:**
+
+- Transfer input tokens from the user to the contract using transferFrom.
+- Calculate the output amount according to reserves and the constant product formula.
+- Ensure output amount meets the minimum threshold (amountOutMin).
+- Update the internal reserves to reflect the swap.
+- Transfer output tokens to the recipient address.
+- Validate that the transaction happens before the deadline.
+
+**Parameters:**
+
+- `uint256 amountIn`: Exact amount of input tokens to swap.
+- `uint256 amountOutMin`: Minimum amount of output tokens to receive.
+- `address[] path`: Array with two addresses — [inputToken, outputToken].
+- `address to`: Recipient address of output tokens.
+- `uint256 deadline`: Timestamp after which the transaction will fail.
+
+**Returns:**
+
+- `uint256[] amounts`: Array with the input and output token amounts: [amountIn, amountOut].
+
+
 ---
 
 
