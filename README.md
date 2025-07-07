@@ -107,7 +107,7 @@ In exchange, the user receives LP tokens that represent their share of the pool.
 
 By adding liquidity, the user enables others to swap tokens, and in return, earns a share of the swap fees.
 
-<div/ align="center">
+<div align="center">
 
 **Tasks**:
 
@@ -125,29 +125,30 @@ By adding liquidity, the user enables others to swap tokens, and in return, earn
 
 **Parameters:**
 
-address tokenA: Address of token A.
+- address tokenA: Address of token A.
 
-address tokenB: Address of token B.
+- address tokenB: Address of token B.
 
-uint256 amountADesired: Amount of token A the user wants to deposit.
+- uint256 amountADesired: Amount of token A the user wants to deposit.
 
-uint256 amountBDesired: Amount of token B the user wants to deposit.
+- uint256 amountBDesired: Amount of token B the user wants to deposit.
 
-uint256 amountAMin: Minimum amount of token A accepted (slippage protection).
+- uint256 amountAMin: Minimum amount of token A accepted (slippage protection).
 
-uint256 amountBMin: Minimum amount of token B accepted (slippage protection).
+- uint256 amountBMin: Minimum amount of token B accepted (slippage protection).
 
-address to: Address that will receive the LP (liquidity provider) tokens.
+- address to: Address that will receive the LP (liquidity provider) tokens.
 
-uint256 deadline: Timestamp after which the transaction will fail.
+- uint256 deadline: Timestamp after which the transaction will fail.
 
 **Returns:**
 
-uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
+- uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
+- uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
+- uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
+
 
 </div>
 
