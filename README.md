@@ -84,14 +84,13 @@ The contract replicates basic Uniswap V2 logic without relying on the actual Uni
 
 ## Deployment
 
-The contract was deployed and successfully verified on the **Sepolia Testnet** at the following address:
+The contract was deployed on the **Sepolia testnet**, but could not be properly verified on Etherscan due to errors related to OpenZeppelin imports and compilation issues outside of Remix.
+
+Contract address on Sepolia (deployed from Remix):
+
+(https://sepolia.etherscan.io/verifyContract-solc?a=0x93A0c1f7d6a9162C59C16678Fc31e9639AfeA5Fc&c=v0.8.20%2bcommit.a1b79de6&lictype=3)
 
 
-https://sepolia.etherscan.io/verifyContract-solc?a=0x5d5c3d45CEDcecfe2E87FC92D2bB7E7916aB6168&c=v0.8.20%2bcommit.a1b79de6&lictype=3
-
-
-- Functions were manually tested on Sepolia with deployed ERC20 tokens.
-- Transactions were confirmed via Remix and visible on Sepolia’s blockchain explorer.
 
 ---
 
@@ -255,11 +254,18 @@ uint256 amountOut: The maximum amount of output tokens the user will receive aft
 
 ## Contract Details
 
-- Contract Name: `SimpleSwap.sol`
+
+Los contratos actuales están en la carpeta `v2/` y son:
+
+- `SimpleSwapContract.sol`: contrato principal para swap y liquidez.
+- `TokenAv1.sol`: token ERC20 personalizado A.
+- `TokenBv1.sol`: token ERC20 personalizado B.
 - Located in: main directory of the repository
 - Uses OpenZeppelin's 'IERC20' interface for token interaction.
 - Implements key functions with detailed NatSpec comments.
 - Designed to replicate basic Uniswap V2 functionality without external dependencies.
+
+
 
 ---
 
