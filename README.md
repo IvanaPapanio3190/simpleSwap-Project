@@ -136,9 +136,37 @@ ParserError: Source "@openzeppelin/contracts/token/ERC20/ERC20.sol" not found: F
 
 
 
+## Tested Functions
+
+***addLiquidity(...)***
+  
+       Tested manually on Sepolia testnet using two deployed ERC20 tokens (TokenA and TokenB).
+      
+        Steps followed:
+
+     - Executed approve() on both tokens to allow the SimpleSwap contract to spend user balances.
+
+     - Called addLiquidity(...) with valid parameters (amountADesired, amountBDesired, amountAMin, amountBMin, etc.).
+
+     - Verified in Remix that:
+
+              - Tokens were correctly transferred to the contract.
+
+              - Internal reserves were updated.
+
+              - LP tokens were minted and assigned to the correct address.
+     
+     - The LiquidityAdded event was emitted as expected.
 
 
 
+
+
+***removeLiquidity(...)***
+
+    - could not be successfully tested due to a gas-related error during execution.
+    - Investigation is pending; this function is implemented but remains unverified under current testing conditions.
+  
 
 
 
@@ -365,7 +393,7 @@ Los contratos actuales están en la carpeta `SimpleSwap_v2/` y son:
 
 - Tests were conducted via Remix IDE using Injected Web3 with MetaMask.
 
-- All core functionalities (addLiquidity, removeLiquidity, swapExactTokensForTokens, etc.) were executed successfully in Remix.
+- All core functionalities except removeLiquidity were executed successfully in Remix. The removeLiquidity function caused gas-related errors during testing.
 
 
    **Contract verification on Sepolia Etherscan was unsuccessful** due to issues with OpenZeppelin imports and limitations of Remix when compiling external dependencies.
