@@ -251,7 +251,7 @@ It uses the Automated Market Maker (AMM) formula, which maintains the product of
 
 ---
 
-🔹 sqrt(...): Computes the square root of a number using iterative approximation.
+**🔹 sqrt(...)**: Computes the square root of a number using iterative approximation.
 This internal helper function is used to calculate the square root of the product of token amounts when minting liquidity tokens.
 It uses the Babylonian method for efficient approximation.
 
@@ -267,28 +267,31 @@ uint256 z: The square root of the input value.
 
 **Notes**:
 
-This function is internal and not accessible externally.
+- This function is internal and not accessible externally.
 
-It ensures precision for liquidity = sqrt(amountA * amountB) in addLiquidity.
+- It ensures precision for liquidity = sqrt(amountA * amountB) in addLiquidity.
+
+
+---
 
 
  ### Events
 The contract emits the following events to signal key state changes:
 
-- LiquidityAdded(address provider, uint256 amountA, uint256 amountB, uint256 liquidity)
+**- LiquidityAdded**(address provider, uint256 amountA, uint256 amountB, uint256 liquidity)
 Emitted when a user adds liquidity to the pool.
 It includes the provider’s address, token amounts added, and liquidity minted.
 
-- LiquidityRemoved(address provider, uint256 amountA, uint256 amountB, uint256 liquidity)
+**- LiquidityRemoved**(address provider, uint256 amountA, uint256 amountB, uint256 liquidity)
 Emitted when a user removes liquidity from the pool.
 It includes the provider’s address, token amounts withdrawn, and liquidity burned.
 
-- TokensSwapped(address swapper, uint256 amountIn, uint256 amountOut, address tokenIn, address tokenOut)
+**- TokensSwapped**(address swapper, uint256 amountIn, uint256 amountOut, address tokenIn, address tokenOut)
 Emitted when a token swap is executed.
 It includes who performed the swap, input/output amounts, and token addresses.
 
 
-
+---
 ## Contract Details
 
 
@@ -308,26 +311,30 @@ Los contratos actuales están en la carpeta `SimpleSwap_v2/` y son:
 
 ## Testing
 
-- Functions were manually tested on the Sepolia testnet with deployed ERC20 tokens.
-- All transactions were verified in Remix and on Sepolia blockchain explorer.
-- Due to Remix import limitations, contract verification on Etherscan was unsuccessful.
+- Functions were manually tested on the Sepolia testnet with custom ERC20 tokens (TokenA and TokenB) deployed separately.
+
+- Tests were conducted via Remix IDE using Injected Web3 with MetaMask.
+
+- All core functionalities (addLiquidity, removeLiquidity, swapExactTokensForTokens, etc.) were executed successfully in Remix.
+
+
+   **Contract verification on Sepolia Etherscan was unsuccessful** due to issues with OpenZeppelin imports and limitations of Remix when compiling external dependencies.
+
 
 ---
 
-## Pending/In-Progress Tests
-
-- 'swapExactTokensForTokens()' and 'removeLiquidity()' are being tested.
-- Results, screenshots, and edge analysis will be added soon.
-
----  
 
 ## Limitations
 
 - OpenZeppelin imports could not be verified on Etherscan due to import callback restrictions in Remix.
-- Swap fee is fixed and simplified.
-- Does not implement advanced Uniswap features like flash swaps or multi-hop swaps.
+- Swap fee is fixed and simplified (no dynamic fee or fee distribution implemented).
+- Does not implement advanced Uniswap features such as flash swaps or multi-hop swaps.
+- Liquidity tokens are represented via a simplified internal balance mapping, not by a separate ERC20 contract.
+
 
 ---
+
+
 ## License
 
 This project is licensed under the MIT License © 2025
@@ -336,6 +343,8 @@ This project is licensed under the MIT License © 2025
 
 
 ---
+
+
 Made by: [Ivana Papaño](https://github.com/IvanaPapanio3190)
 
 
