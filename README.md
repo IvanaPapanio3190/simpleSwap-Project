@@ -86,11 +86,13 @@ The contract replicates basic Uniswap V2 logic without relying on the actual Uni
 
 The contract was deployed on the **Sepolia testnet**, but could not be properly verified on Etherscan due to errors related to OpenZeppelin imports and compilation issues outside of Remix.
 
-Contract address on Sepolia (deployed from Remix):
+**Contract address on Sepolia (deployed from Remix)**:
 
 (https://sepolia.etherscan.io/verifyContract-solc?a=0x93A0c1f7d6a9162C59C16678Fc31e9639AfeA5Fc&c=v0.8.20%2bcommit.a1b79de6&lictype=3)
 
+**TokenA Contract**: 0x143Ce465ef5e2B1F3Fc3536C167Df7ac0f93D16C
 
+**TokenB Contract**: 0xA6F2FF3c3268648F220E03403Cd32B5831A53944
 
 ---
 
@@ -104,6 +106,22 @@ This function allows a user to provide liquidity by depositing two ERC20 tokens 
 In exchange, the user receives LP tokens that represent their share of the pool.
 
 By adding liquidity, the user enables others to swap tokens, and in return, earns a share of the swap fees.
+
+<div/ align="center">
+
+**Tasks**:
+
+- Transfer tokens A and B from the user to the contract using transferFrom.
+
+- Calculate the optimal amounts of tokens to add to maintain the pool ratio.
+
+- Update the pool's internal reserves.
+
+- Issue liquidity tokens (LP tokens) to the user to represent their stake.
+
+- Validate that the transaction occurs before the deadline.
+
+- Apply minimum thresholds to prevent excessive slippage (amountAMin, amountBMin).
 
 **Parameters:**
 
@@ -125,11 +143,13 @@ uint256 deadline: Timestamp after which the transaction will fail.
 
 **Returns:**
 
-uint256 amountA: Actual amount of token A added.
+uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-uint256 amountB: Actual amount of token B added.
+uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-uint256 liquidity: Amount of LP tokens minted.
+uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
+
+</div>
 
 ---
 
@@ -255,12 +275,12 @@ uint256 amountOut: The maximum amount of output tokens the user will receive aft
 ## Contract Details
 
 
-Los contratos actuales están en la carpeta `v2/` y son:
+Los contratos actuales están en la carpeta `SimpleSwap_v2/` y son:
 
 - `SimpleSwapContract.sol`: contrato principal para swap y liquidez.
 - `TokenAv1.sol`: token ERC20 personalizado A.
 - `TokenBv1.sol`: token ERC20 personalizado B.
-- Located in: main directory of the repository
+- Located in: `SimpleSwap_v2/` folder in the repository root
 - Uses OpenZeppelin's 'IERC20' interface for token interaction.
 - Implements key functions with detailed NatSpec comments.
 - Designed to replicate basic Uniswap V2 functionality without external dependencies.
