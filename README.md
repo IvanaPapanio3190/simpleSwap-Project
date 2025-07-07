@@ -272,6 +272,37 @@ This function allows a user to swap an exact amount of one ERC20 token (inputTok
 
 - `uint256[] amounts`: Array with the input and output token amounts: [amountIn, amountOut].
 
+****
+
+**🔹 swapExactTokensForTokens(...)**: Swaps a fixed amount of input token for the maximum possible amount of output token, respecting minimum output and deadline.
+
+This function allows a user to swap an exact amount of one ERC20 token (inputToken) for another ERC20 token (outputToken) within the liquidity pool. It guarantees that the user will receive at least a minimum amount of the output token (amountOutMin) to protect against price slippage, and the swap must happen before the specified deadline.
+
+**Tasks:**
+
+- Transfer input tokens from the user to the contract using transferFrom.
+- Calculate the output amount according to reserves and the constant product formula.
+- Ensure output amount meets the minimum threshold (amountOutMin).
+- Update the internal reserves to reflect the swap.
+- Transfer output tokens to the recipient address.
+- Validate that the transaction happens before the deadline.
+
+**Parameters:**
+
+- `uint256 amountIn`: Exact amount of input tokens to swap.
+- `uint256 amountOutMin`: Minimum amount of output tokens to receive.
+- `address[] path`: Array with two addresses — [inputToken, outputToken].
+- `address to`: Recipient address of output tokens.
+- `uint256 deadline`: Timestamp after which the transaction will fail.
+
+**Returns:**
+
+- `uint256[] amounts`: Array with the input and output token amounts: [amountIn, amountOut].
+
+
+
+
+
 
 ---
 
