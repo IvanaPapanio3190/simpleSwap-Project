@@ -11,10 +11,10 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Deployment](#deployment)
+- [Contract Verification](#Contract-Verification)
 - [Usage](#usage)
 - [Contract Details](#contract-details)
 - [Testing](#testing)
-- [Pruebas pendientes / en progreso](#pruebas-pendientes--en-progreso)
 - [Limitations](#limitations)
 - [License](#license)
 
@@ -94,7 +94,24 @@ The contract was deployed on the **Sepolia testnet**, but could not be properly 
 
 **TokenB Contract**: 0xA6F2FF3c3268648F220E03403Cd32B5831A53944
 
+
 ---
+
+
+## Contract Verification
+The contract was deployed on Sepolia testnet using Remix IDE.
+
+Verification on Etherscan was unsuccessful due to limitations importing OpenZeppelin contracts when compiling with Remix.
+
+Despite the lack of on-chain verified source code on Etherscan, all functions were manually tested on Sepolia and verified via Remix and blockchain explorer.
+
+The contract verification on Sepolia Etherscan was unsuccessful due to issues with OpenZeppelin imports and Remix’s external dependency limitations.
+Below is a screenshot of the verification error message encountered:
+
+
+---
+
+
 
 ## Usage
 
