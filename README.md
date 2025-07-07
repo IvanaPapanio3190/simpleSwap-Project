@@ -101,59 +101,6 @@ The contract was deployed on the **Sepolia testnet**, but could not be properly 
 Use the following main functions:
 
 
- 
-**🔹addLiquidity(...)** : Adds liquidity to the token pool by depositing a pair of ERC20 tokens.
-
-This function allows a user to provide liquidity by depositing two ERC20 tokens (Token A and Token B) into a liquidity pool. 
-In exchange, the user receives LP tokens that represent their share of the pool.
-
-By adding liquidity, the user enables others to swap tokens, and in return, earns a share of the swap fees.
-
-
-
-        **Tasks**:
-
-            Transfer tokens A and B from the user to the contract using transferFrom.
-
-            Calculate the optimal amounts of tokens to add to maintain the pool ratio.
-
-            Update the pool's internal reserves.
-
-            Issue liquidity tokens (LP tokens) to the user to represent their stake.
-
-            Validate that the transaction occurs before the deadline.
-
-            Apply minimum thresholds to prevent excessive slippage (amountAMin, amountBMin).
-
-          **Parameters:**
-
-            address tokenA: Address of token A.
-
-            address tokenB: Address of token B.
-
-            uint256 amountADesired: Amount of token A the user wants to deposit.
-
-            uint256 amountBDesired: Amount of token B the user wants to deposit.
-
-            uint256 amountAMin: Minimum amount of token A accepted (slippage protection).
-
-            uint256 amountBMin: Minimum amount of token B accepted (slippage protection).
-
-            address to: Address that will receive the LP (liquidity provider) tokens.
-
-            uint256 deadline: Timestamp after which the transaction will fail.
-
-         **Returns:**
-
-            uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
-
-            uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
-
-            uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
-
-
-*************
-
 
 **🔹addLiquidity(...)** : Adds liquidity to the token pool by depositing a pair of ERC20 tokens.
 
@@ -225,6 +172,44 @@ uint256 deadline: Timestamp after which the transaction will fail.
 uint256 amountA: Amount of token A returned.
 
 uint256 amountB: Amount of token B returned.
+
+
+************
+
+**🔹removeLiquidity(...)**: Removes liquidity from the pool, returning the underlying tokens to the user.
+
+When users no longer want to participate as liquidity providers, they can burn their LP tokens (representing their share of the pool) and receive back the underlying ERC20 tokens (tokenA and tokenB) in proportion to their contribution.
+
+**Tasks**:
+
+    - Burn the user's liquidity tokens (LP tokens).
+    - Calculate the amounts of tokens A and B to return.
+    - Transfer tokens A and B back to the user.
+    - Validate that the transaction occurs before the deadline.
+    - Apply minimum thresholds (amountAMin, amountBMin) to protect against slippage.
+
+**Parameters:**
+
+    address tokenA: Address of token A.
+
+    address tokenB: Address of token B.
+
+    uint256 liquidity: Amount of LP tokens to burn.
+
+    uint256 amountAMin: Minimum amount of token A to receive (slippage protection).
+
+    uint256 amountBMin: Minimum amount of token B to receive (slippage protection).
+
+    address to: Address that will receive the withdrawn tokens.
+
+    uint256 deadline: Timestamp after which the transaction will fail.
+
+**Returns:**
+
+    uint256 amountA: Amount of token A returned to the user.
+
+    uint256 amountB: Amount of token B returned to the user.
+
 
 ---
 
