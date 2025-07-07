@@ -147,34 +147,6 @@ By adding liquidity, the user enables others to swap tokens, and in return, earn
 
 ---
 
-**🔹 removeLiquidity(...)**: Removes liquidity from the pool, returning the underlying tokens to the user.
-
-When users no longer want to participate as liquidity providers, they can burn their LP tokens (representing their share of the pool) and receive back the underlying ERC20 tokens (tokenA and tokenB) in proportion to their contribution.
-
-**Parameters:**
-
-address tokenA: Address of token A.
-
-address tokenB: Address of token B.
-
-uint256 liquidity: Amount of LP tokens to burn.
-
-uint256 amountAMin: Minimum amount of token A to receive.
-
-uint256 amountBMin: Minimum amount of token B to receive.
-
-address to: Address to receive the tokens.
-
-uint256 deadline: Timestamp after which the transaction will fail.
-
-**Returns:**
-
-uint256 amountA: Amount of token A returned.
-
-uint256 amountB: Amount of token B returned.
-
-
-************
 
 **🔹removeLiquidity(...)**: Removes liquidity from the pool, returning the underlying tokens to the user.
 
@@ -228,6 +200,20 @@ How it works:
 - If the swap conditions are met, the contract transfers the input tokens from the user, swaps them in the pool, and sends the output tokens to the recipient address (to).
 
 - The deadline parameter prevents transactions from executing if too much time has passed, protecting the user from unfavorable price changes.
+
+**Tasks**:
+
+- Transfer input tokens from the user to the contract using transferFrom.
+
+- Calculate the output amount according to reserves and the constant product formula.
+
+- Ensure output amount meets the minimum threshold (amountOutMin).
+
+- Update the internal reserves to reflect the swap.
+
+- Transfer output tokens to the recipient address.
+
+- Validate that the transaction happens before the deadline.
 
 **Parameters:**
 
