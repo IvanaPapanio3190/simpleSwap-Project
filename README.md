@@ -11,7 +11,7 @@
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Deployment](#deployment)
-- [Contract Verification](#Contract-Verification)
+- [Contract Verification](#contract-verification)
 - [Usage](#usage)
 - [Contract Details](#contract-details)
 - [Testing](#testing)
@@ -108,11 +108,13 @@ Despite the lack of on-chain verified source code on Etherscan, all functions we
 The contract verification on Sepolia Etherscan was unsuccessful due to issues with OpenZeppelin imports and Remix’s external dependency limitations.
 Below is a screenshot of the verification error message encountered:
 
-![Etherscan Verification Error](verifypublish.jpg) 
+<p align="center"> <img src="verifypublish.jpg" alt="Sepolia verify error" width="700"/> </p> 
 
 
-Error message received:
+**Error message received**:
 
+
+```text
 ParserError: Source "@openzeppelin/contracts/token/ERC20/IERC20.sol" not found: File import callback not supported
  --> myc:4:1:
   |
@@ -125,8 +127,17 @@ ParserError: Source "@openzeppelin/contracts/token/ERC20/ERC20.sol" not found: F
 5 | import "@openzeppelin/contracts/token/ERC20/ERC20.sol"
   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+```
 
-![OpenZeppelin Import Error](warning.jpg)
+
+
+
+<p align="center"> <img src="warning.jpg" alt="Etherscan Remix import error" width="700"/> </p> 
+
+
+
+
+
 
 
 
