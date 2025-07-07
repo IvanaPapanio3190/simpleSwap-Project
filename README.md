@@ -113,43 +113,43 @@ By adding liquidity, the user enables others to swap tokens, and in return, earn
 
         **Tasks**:
 
-         - Transfer tokens A and B from the user to the contract using transferFrom.
+            Transfer tokens A and B from the user to the contract using transferFrom.
 
-         - Calculate the optimal amounts of tokens to add to maintain the pool ratio.
+            Calculate the optimal amounts of tokens to add to maintain the pool ratio.
 
-         - Update the pool's internal reserves.
+            Update the pool's internal reserves.
 
-         - Issue liquidity tokens (LP tokens) to the user to represent their stake.
+            Issue liquidity tokens (LP tokens) to the user to represent their stake.
 
-         - Validate that the transaction occurs before the deadline.
+            Validate that the transaction occurs before the deadline.
 
-         - Apply minimum thresholds to prevent excessive slippage (amountAMin, amountBMin).
+            Apply minimum thresholds to prevent excessive slippage (amountAMin, amountBMin).
 
-        **Parameters:**
+          **Parameters:**
 
-         - address tokenA: Address of token A.
+            address tokenA: Address of token A.
 
-         - address tokenB: Address of token B.
+            address tokenB: Address of token B.
 
-         - uint256 amountADesired: Amount of token A the user wants to deposit.
+            uint256 amountADesired: Amount of token A the user wants to deposit.
 
-         - uint256 amountBDesired: Amount of token B the user wants to deposit.
+            uint256 amountBDesired: Amount of token B the user wants to deposit.
 
-         - uint256 amountAMin: Minimum amount of token A accepted (slippage protection).
+            uint256 amountAMin: Minimum amount of token A accepted (slippage protection).
 
-         - uint256 amountBMin: Minimum amount of token B accepted (slippage protection).
+            uint256 amountBMin: Minimum amount of token B accepted (slippage protection).
 
-         - address to: Address that will receive the LP (liquidity provider) tokens.
+            address to: Address that will receive the LP (liquidity provider) tokens.
 
-         - uint256 deadline: Timestamp after which the transaction will fail.
+            uint256 deadline: Timestamp after which the transaction will fail.
 
-        **Returns:**
+         **Returns:**
 
-         - uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
+            uint256 amountA: Actual amount of token A added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-         - uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
+            uint256 amountB: Actual amount of token B added. Amounts actually deposited (may be lower than the desired amount due to the ratio).
 
-         - uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
+            uint256 liquidity: Amount of LP tokens minted. Amount of LP tokens issued to the user.
 
 
 *************
