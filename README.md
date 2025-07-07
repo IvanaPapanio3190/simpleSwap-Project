@@ -90,6 +90,8 @@ The contract was deployed on the **Sepolia testnet**, but could not be properly 
 
 (https://sepolia.etherscan.io/verifyContract-solc?a=0x93A0c1f7d6a9162C59C16678Fc31e9639AfeA5Fc&c=v0.8.20%2bcommit.a1b79de6&lictype=3)
 
+**Simple Swap**: 0x93A0c1f7d6a9162C59C16678Fc31e9639AfeA5Fc
+
 **TokenA Contract**: 0x143Ce465ef5e2B1F3Fc3536C167Df7ac0f93D16C
 
 **TokenB Contract**: 0xA6F2FF3c3268648F220E03403Cd32B5831A53944
